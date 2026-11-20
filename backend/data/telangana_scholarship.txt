@@ -1,0 +1,5 @@
+Telangana Student Scholarship:
+- Income = 200000 INR
+- Age = 25 years
+- Enrollment = college
+Official page: https://example.com/scholarship

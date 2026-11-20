@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+sqlalchemy
+pydantic
+google-genai
+chromadb
+pymupdf
+aiofiles
