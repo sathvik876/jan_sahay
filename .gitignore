@@ -11,3 +11,6 @@ venv/
 *.db-*
 backend/chroma_db/
 frontend/dist/
+.streamlit/secrets.toml
+streamlit_app/.streamlit/secrets.toml
+streamlit_app/.venv/

@@ -80,6 +80,38 @@ npm install
 npm run dev   # Vite starts on http://localhost:3000
 ```
 The React app proxies API calls to `http://localhost:8000` (see `vite.config.js`).
+
+## Streamlit alternative
+
+The optional Streamlit UI is in `streamlit_app/app.py`. It uses the same FastAPI backend; it does not replace or bundle the backend.
+
+### Run locally
+
+Start the backend using the instructions above. In a separate PowerShell terminal, from the project root:
+
+```powershell
+python -m venv streamlit_app\.venv
+streamlit_app\.venv\Scripts\python -m pip install -r streamlit_app\requirements.txt
+$env:API_BASE_URL = "http://127.0.0.1:8000"
+streamlit_app\.venv\Scripts\streamlit.exe run streamlit_app\app.py
+```
+
+Open the local Streamlit URL printed in the terminal (normally `http://localhost:8501`).
+
+### Deploy to Streamlit Community Cloud
+
+1. Deploy the FastAPI backend separately (for example, as a Render web service).
+2. In Streamlit Community Cloud, create an app from this repository and select `main` and `streamlit_app/app.py`.
+3. The app uses `streamlit_app/requirements.txt` for its Python dependencies.
+4. In the app's **Advanced settings → Secrets**, set the backend URL:
+
+   ```toml
+   API_BASE_URL = "https://YOUR-BACKEND-SERVICE.onrender.com"
+   ```
+
+5. Deploy the Streamlit app. Check the backend connection status in its sidebar.
+
+Keep the Gemini API key on the backend host only. Do not put it in this repository or the Streamlit app's secrets.
 ---
 ## Important Files (generated for you)
 - **frontend/package.json** – defines React, Vite, Tailwind and a proxy.
